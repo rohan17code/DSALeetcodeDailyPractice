@@ -24,7 +24,7 @@ class Solution {
                 l2 = l2.next;
             }
             int num = sum % 10;
-            carry = sum/10;
+            carry = sum / 10;
             newNode.next = new ListNode(num);
             newNode = newNode.next;
         }
