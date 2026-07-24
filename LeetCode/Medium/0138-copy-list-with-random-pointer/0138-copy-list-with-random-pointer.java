@@ -37,8 +37,8 @@ class Solution {
             curr.next = newCurr.next;
             curr = curr.next;
             if(curr != null) {
-                newCurr.next = curr.next;
-                newCurr = newCurr.next;
+            newCurr.next = curr.next;
+            newCurr = newCurr.next;
             }
         }
         return newHead;
