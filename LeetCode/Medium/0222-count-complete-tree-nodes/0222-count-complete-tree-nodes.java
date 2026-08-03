@@ -14,27 +14,27 @@
  * }
  */
 class Solution {
-    private int leftDepth(TreeNode root) {
-        int dep = 0;
+    private int leftHeight(TreeNode root) {
+        int h = 0;
         while(root != null) {
             root = root.left;
-            dep++;
+            h++;
         }
-        return dep;
+        return h;
     }
-    private int rightDepth(TreeNode root) {
-        int dep = 0;
+    private int rightHeight(TreeNode root) {
+        int h = 0;
         while(root != null) {
             root = root.right;
-            dep++;
+            h++;
         }
-        return dep;
-    }    
+        return h;
+    }
     public int countNodes(TreeNode root) {
-        int leftDepth = leftDepth(root);
-        int rightDepth = rightDepth(root);
-        if(leftDepth == rightDepth) {
-            return (int) Math.pow(2, leftDepth) - 1;
+        int leftHeight = leftHeight(root);
+        int rightHeight = rightHeight(root);
+        if(leftHeight == rightHeight) {
+            return (int) Math.pow(2, leftHeight) - 1;
         } else {
             return countNodes(root.left) + countNodes(root.right) + 1;
         }
