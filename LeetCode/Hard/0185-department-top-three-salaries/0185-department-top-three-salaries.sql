@@ -1,13 +1,15 @@
 # Write your MySQL query statement below
-SELECT d.name AS Department,
-    e.name AS Employee,
-    e.salary AS Salary
-FROM Employee e
+SELECT e.name AS Employee,
+    e.salary AS Salary,
+    d.name AS Department
+FROM (
+    SELECT *,
+    DENSE_RANK() OVER(
+        PARTITION BY departmentId
+        ORDER BY salary DESC
+    ) AS 'rank'
+    FROM Employee
+) e
 LEFT JOIN Department d
-ON e.departmentId = d.id
-WHERE (
-    SELECT COUNT(DISTINCT e2.salary)
-    FROM Employee e2
-    WHERE e2.departmentId = e.departmentId
-    AND e2.salary >= e.salary
-) <= 3;
+ON e.departmentId = d.Id
+WHERE e.rank <= 3;
