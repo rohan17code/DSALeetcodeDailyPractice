@@ -14,9 +14,7 @@ class Solution {
         return dfs(graph, source, destination, visited);
     }
     public boolean dfs(ArrayList<Integer>[] graph, int source, int destination, boolean[] visited) {
-        if(source == destination) {
-            return true;
-        }
+        if(source == destination) return true;
         visited[source] = true;
         for(int i = 0; i<graph[source].size(); i++) {
             int neighbor = graph[source].get(i);
