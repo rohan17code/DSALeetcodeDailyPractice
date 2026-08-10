@@ -5,11 +5,11 @@ class Solution {
         q.offer(new Pair<>(root, 0));
         int maxWidth = 0;
         while(!q.isEmpty()) {
-            int currLevelSize = q.size();
+            int currLvlSize = q.size();
             int stIdx = q.peekFirst().getValue();
             int endIdx = q.peekLast().getValue();
             maxWidth = Math.max(maxWidth, endIdx - stIdx + 1);
-            for(int i = 0; i<currLevelSize; i++) {
+            for(int i = 0; i<currLvlSize; i++) {
                 Pair<TreeNode, Integer> curr = q.poll();
                 TreeNode node = curr.getKey();
                 int idx = curr.getValue();
