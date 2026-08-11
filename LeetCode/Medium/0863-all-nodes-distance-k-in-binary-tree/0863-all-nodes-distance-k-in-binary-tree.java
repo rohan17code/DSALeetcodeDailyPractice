@@ -1,4 +1,3 @@
-
 class Solution {
     private void makeParentPointer(TreeNode root, Map<TreeNode, TreeNode> parent) {
         Queue<TreeNode> q = new LinkedList<>();
@@ -36,12 +35,12 @@ class Solution {
                     q.offer(curr.right);
                     visited.add(curr.right);
                 }
-                TreeNode p = parent.get(curr); // curr ke parent ko nikalna
+                TreeNode p = parent.get(curr);
                 if(p != null && !visited.contains(p)) {
                     q.offer(p);
                     visited.add(p);
                 }
-            } 
+            }
             dist++;
         }
         List<Integer> ans = new ArrayList<>();
