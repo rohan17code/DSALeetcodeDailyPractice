@@ -14,7 +14,7 @@ class Solution {
         root.left = helper(preorder, inorder, left, inoIdx - 1);
         root.right = helper(preorder, inorder, inoIdx + 1, right);
         return root;
-    }
+    } 
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         return helper(preorder, inorder, 0, inorder.length - 1);
     }
