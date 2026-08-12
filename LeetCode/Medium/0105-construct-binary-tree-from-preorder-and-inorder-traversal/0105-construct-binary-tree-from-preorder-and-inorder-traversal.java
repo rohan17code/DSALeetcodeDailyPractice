@@ -17,6 +17,6 @@ class Solution {
         for(int i = 0; i<inorder.length; i++) {
             inorderIdxMap.put(inorder[i], i);
         }
-        return helper(preorder, inorderIdxMap, 0, 0, inorder.length - 1);
+        return helper(preorder, inorderIdxMap, 0, 0, preorder.length - 1);
     }
 }
