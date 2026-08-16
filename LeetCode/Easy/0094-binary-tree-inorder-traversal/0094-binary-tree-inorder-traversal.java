@@ -14,15 +14,29 @@
  * }
  */
 class Solution {
-    private void helper(TreeNode root, List<Integer> ans) {
-        if(root == null) return;
-        helper(root.left, ans);
-        ans.add(root.val);
-        helper(root.right, ans);
-    }
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> ans = new ArrayList<>();
-        helper(root, ans);
+        TreeNode curr = root;
+        while(curr != null) {
+            if(curr.left == null) {
+                ans.add(curr.val);
+                curr = curr.right;
+            } else {
+                // finding IP
+                TreeNode IP = curr.left;
+                while(IP.right != null && IP.right != curr) {
+                    IP = IP.right;
+                }
+                if(IP.right == null) {
+                    IP.right = curr;
+                    curr = curr.left;
+                } else {
+                    IP.right = null;
+                    ans.add(curr.val);
+                    curr = curr.right;
+                }
+            }
+        }
         return ans;
     }
 }
