@@ -1,18 +1,3 @@
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
 class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> ans = new ArrayList<>();
@@ -22,21 +7,20 @@ class Solution {
                 ans.add(curr.val);
                 curr = curr.right;
             } else {
-                // finding IP
-                TreeNode IP = curr.left;
-                while(IP.right != null && IP.right != curr) {
-                    IP = IP.right;
+                TreeNode ip = curr.left;
+                while(ip.right != null && ip.right != curr) {
+                    ip = ip.right;
                 }
-                if(IP.right == null) {
-                    IP.right = curr;
+                if(ip.right == null) {
+                    ip.right = curr;
                     curr = curr.left;
                 } else {
-                    IP.right = null;
+                    ip.right = null;
                     ans.add(curr.val);
                     curr = curr.right;
                 }
             }
-        }
-        return ans;
+        }  
+        return ans;      
     }
 }
