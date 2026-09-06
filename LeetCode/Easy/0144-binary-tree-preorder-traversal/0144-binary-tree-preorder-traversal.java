@@ -20,7 +20,7 @@ class Solution {
                     curr = curr.right;
                 }
             }
-        }
-        return ans;
+        }    
+        return ans;    
     }
 }
