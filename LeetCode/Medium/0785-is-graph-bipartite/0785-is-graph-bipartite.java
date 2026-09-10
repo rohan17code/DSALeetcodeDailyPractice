@@ -11,18 +11,18 @@ class Solution {
                 color[i] = 0;
                 while(!q.isEmpty()) {
                     int curr = q.poll();
-                for(int j = 0; j<graph[curr].length; j++) {
-                    int dest = graph[curr][j];
-                    if(color[dest] == -1) {
-                        int nxtColor = color[curr] == 0 ? 1 : 0;
-                        color[dest] = nxtColor;
-                        q.add(dest);
-                    } else if(color[dest] == color[curr]) {
-                        return false;
+                    for(int j = 0; j<graph[curr].length; j++) {
+                        int dest = graph[curr][j];
+                        if(color[dest] == -1) {
+                            int nxtColor = color[curr] == 0 ? 1 : 0;
+                            color[dest] = nxtColor;
+                            q.add(dest);
+                        } else if(color[dest] == color[curr]) {
+                            return false;
+                        }
                     }
                 }
             }
-        }
         }
         return true;
     }
