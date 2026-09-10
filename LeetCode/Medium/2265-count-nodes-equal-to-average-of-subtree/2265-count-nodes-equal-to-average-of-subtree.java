@@ -23,7 +23,6 @@ class Solution {
         int nodes = left[1] + right[1] + 1;
         if(sum / nodes == root.val) cnt++;
         return new int[]{sum, nodes};
-
     }
     public int averageOfSubtree(TreeNode root) {
         dfs(root);
