@@ -24,7 +24,7 @@ class Solution {
             }
         }
         topoStack.push(curr);
-    }    
+    }
     public int[] findOrder(int numCourses, int[][] prerequisites) {
         ArrayList<Integer>[] graph = new ArrayList[numCourses];
         for(int i = 0; i<numCourses; i++) {
@@ -34,7 +34,7 @@ class Solution {
             int dest = prerequisites[i][0];
             int src = prerequisites[i][1];
             graph[src].add(dest);
-        }        
+        }
         boolean[] vis = new boolean[numCourses];
         boolean[] stack = new boolean[numCourses];
         for(int i = 0; i<numCourses; i++) {
@@ -43,7 +43,7 @@ class Solution {
                     return new int[0];
                 }
             }
-        } 
+        }
         vis = new boolean[numCourses];
         for(int i = 0; i<numCourses; i++) {
             if(!vis[i]) {
@@ -51,7 +51,7 @@ class Solution {
             }
         }
         int[] ans = new int[numCourses];
-        for(int i = 0; i < numCourses; i++) {
+        for(int i = 0; i<numCourses; i++) {
             ans[i] = topoStack.pop();
         }
         return ans;
