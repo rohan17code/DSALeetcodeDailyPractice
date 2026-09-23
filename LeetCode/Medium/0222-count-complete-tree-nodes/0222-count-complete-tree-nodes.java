@@ -16,12 +16,12 @@ class Solution {
         return h;
     }
     public int countNodes(TreeNode root) {
-        int leftH = leftH(root);
-        int rightH = rightH(root);
-        if(leftH == rightH) {
-            return (int) Math.pow(2, leftH) - 1;
-        } else {
-            return countNodes(root.left) + countNodes(root.right) + 1;
+        if(root == null) return 0;
+        int left = leftH(root);
+        int right = rightH(root);
+        if(left == right) {
+            return (int) Math.pow(2, left) - 1;
         }
+        else return countNodes(root.left) + countNodes(root.right) + 1;
     }
 }
