@@ -22,7 +22,7 @@ class Solution {
         }
     }
     public int networkDelayTime(int[][] times, int n, int k) {
-        ArrayList<Edge>[] graph = new ArrayList[n+1];
+        ArrayList<Edge>[] graph = new ArrayList[n + 1];
         for(int i = 1; i<=n; i++) {
             graph[i] = new ArrayList<>();
         }
@@ -32,9 +32,9 @@ class Solution {
             int wt = times[i][2];
             graph[u].add(new Edge(u, v, wt));
         }
-        int[] dist = new int[n + 1];
+        int dist[] = new int[n + 1];
         for(int i = 1; i<=n; i++) {
-            dist[i] = Integer.MAX_VALUE;
+                dist[i] = Integer.MAX_VALUE;
         }
         boolean[] vis = new boolean[n + 1];
         PriorityQueue<Pair> pq = new PriorityQueue<>();
@@ -59,7 +59,7 @@ class Solution {
         int max = 0;
         for(int i = 1; i<=n; i++) {
             if(dist[i] == Integer.MAX_VALUE) {
-                return - 1;
+                return -1;
             }
             max = Math.max(max, dist[i]);
         }
