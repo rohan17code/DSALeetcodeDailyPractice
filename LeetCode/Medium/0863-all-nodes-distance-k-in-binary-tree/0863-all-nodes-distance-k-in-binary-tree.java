@@ -18,27 +18,27 @@ class Solution {
         Map<TreeNode, TreeNode> parent = new HashMap<>();
         makeParentPointer(root, parent);
         Queue<TreeNode> q = new LinkedList<>();
-        Set<TreeNode> visited = new HashSet<>();
+        Set<TreeNode> vis = new HashSet<>();
         q.offer(target);
-        visited.add(target);
+        vis.add(target);
         int dist = 0;
         while(!q.isEmpty()) {
             if(dist == k) break;
             int size = q.size();
             for(int i = 0; i<size; i++) {
                 TreeNode curr = q.poll();
-                if(curr.left != null && !visited.contains(curr.left)) {
+                if(curr.left != null && !vis.contains(curr.left)) {
                     q.offer(curr.left);
-                    visited.add(curr.left);
+                    vis.add(curr.left);
                 }
-                if(curr.right != null && !visited.contains(curr.right)) {
+                if(curr.right != null && !vis.contains(curr.right)) {
                     q.offer(curr.right);
-                    visited.add(curr.right);
+                    vis.add(curr.right);
                 }
                 TreeNode p = parent.get(curr);
-                if(p != null && !visited.contains(p)) {
+                if(p != null && !vis.contains(p)) {
                     q.offer(p);
-                    visited.add(p);
+                    vis.add(p);
                 }
             }
             dist++;
