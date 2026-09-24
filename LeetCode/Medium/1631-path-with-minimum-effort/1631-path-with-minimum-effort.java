@@ -43,10 +43,10 @@ class Solution {
                 int newCol = col + directions[i][1];
                 if(newRow >= 0 && newRow < n && newCol >= 0 && newCol <m) {
                     int diff = Math.abs(heights[row][col] - heights[newRow][newCol]);
-                    int newEffect = Math.max(effort, diff);
-                    if(newEffect < dist[newRow][newCol]) {
-                        dist[newRow][newCol] = newEffect;
-                        pq.offer(new Pair(newEffect, newRow, newCol));
+                    int newEffort = Math.max(effort, diff);
+                    if(newEffort < dist[newRow][newCol]) {
+                        dist[newRow][newCol] = newEffort;
+                        pq.offer(new Pair(newEffort, newRow, newCol));
                     }
                 }
             }
