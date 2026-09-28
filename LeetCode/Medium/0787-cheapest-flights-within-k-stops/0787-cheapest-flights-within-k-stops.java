@@ -22,7 +22,7 @@ class Solution {
         for(int i = 0; i<n; i++) {
             graph[i] = new ArrayList<>();
         }
-        for(int i = 0;i<flights.length; i++) {
+        for(int i = 0; i<flights.length; i++) {
             int u = flights[i][0];
             int v = flights[i][1];
             int wt = flights[i][2];
@@ -40,9 +40,7 @@ class Solution {
             int stops = curr.stops;
             int node = curr.node;
             int cost = curr.cost;
-            if(stops > k) {
-                continue;
-            }
+            if(stops > k) continue;
             for(int i = 0; i<graph[node].size(); i++) {
                 Edge e = graph[node].get(i);
                 int adjNode = e.dest;
