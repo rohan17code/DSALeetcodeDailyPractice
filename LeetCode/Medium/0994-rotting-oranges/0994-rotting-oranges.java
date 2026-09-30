@@ -1,40 +1,53 @@
 class Solution {
-    private void dfs(int[][] grid, int[][] time, int i, int j, int currTime) {
-        if(i < 0 || i >= grid.length || j < 0 || j >= grid[0].length
-        || grid[i][j] == 0 || currTime >= time[i][j]) {
-            return;
-        } 
-        time[i][j] = currTime;
-        dfs(grid, time, i - 1, j, currTime + 1);
-        dfs(grid, time, i + 1, j, currTime + 1);
-        dfs(grid, time, i, j - 1, currTime + 1);
-        dfs(grid, time, i, j + 1, currTime + 1);
+    static class Pair {
+        int row;
+        int col;
+        int time;
+        Pair(int row, int col, int time) {
+            this.row = row;
+            this.col = col;
+            this.time = time;
+        }
     }
     public int orangesRotting(int[][] grid) {
-        if(grid == null || grid.length == 0) return -1;
-        int rows = grid.length, cols = grid[0].length;
-        int[][] time = new int[rows][cols];
-        for(int i = 0; i<grid.length; i++) {
-            Arrays.fill(time[i], Integer.MAX_VALUE);
-        }
-        for(int i = 0; i<rows; i++) {
-            for(int j = 0; j<cols; j++) {
+        int n = grid.length;
+        int m = grid[0].length;
+        Queue<Pair> q = new LinkedList<>();
+        int[][] vis = new int[n][m];
+        int cntFresh = 0;
+        for(int i = 0; i<n; i++) {
+            for(int j = 0; j<m; j++) {
                 if(grid[i][j] == 2) {
-                    dfs(grid, time, i, j, 0);
+                    q.offer(new Pair(i, j, 0));
+                    vis[i][j] = 2;
+                } else {
+                    vis[i][j] = 0;
+                }
+                if(grid[i][j] == 1) cntFresh++;
+            }
+        }
+        int tm = 0;
+        int[] deltaRow = {-1, 0, 1, 0};
+        int[] deltaCol = {0, 1, 0, -1};
+        int cnt = 0;
+        while(!q.isEmpty()) {
+            Pair curr = q.remove();
+            int r = curr.row;
+            int c = curr.col;
+            int t = curr.time;
+            tm = Math.max(tm, t);
+            for(int i = 0; i<4; i++) {
+                int neighRow = r + deltaRow[i];
+                int neighCol = c + deltaCol[i];
+                if(neighRow >= 0 && neighRow < n && neighCol >= 0 && neighCol < m
+                && grid[neighRow][neighCol] == 1) {
+                    q.offer(new Pair(neighRow, neighCol, t + 1));
+                    grid[neighRow][neighCol] = 2;
+                    cnt++;
                 }
             }
         }
-        int timeRequired = 0;
-        for(int i = 0; i<rows; i++) {
-            for(int j = 0; j<cols; j++) {
-                if(grid[i][j] == 1) {
-                    if(time[i][j] == Integer.MAX_VALUE) {
-                        return -1;
-                    }
-                    timeRequired = Math.max(timeRequired, time[i][j]);
-                }
-            }
-        }
-        return timeRequired;
+        if(cnt != cntFresh) return -1;
+        return tm;
     }
 }
