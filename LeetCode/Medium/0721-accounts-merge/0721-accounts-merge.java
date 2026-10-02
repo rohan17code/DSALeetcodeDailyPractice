@@ -19,7 +19,7 @@ class Solution {
         } else if(rank[parA] < rank[parB]) {
             par[parA] = parB;
         } else par[parB] = parA;
-    }
+    }    
     public List<List<String>> accountsMerge(List<List<String>> accounts) {
         int n = accounts.size();
         par = new int[n];
@@ -36,20 +36,20 @@ class Solution {
                 }
             }
         }
-        Map<Integer, ArrayList<String>> merged = new HashMap<>();
+        Map<Integer, ArrayList<String>> merge = new HashMap<>();
         for(String email : map.keySet()) {
             int parent = find(map.get(email));
-            if(!merged.containsKey(parent)) {
-                merged.put(parent, new ArrayList<>());
+            if(!merge.containsKey(parent)) {
+                merge.put(parent, new ArrayList<>());
             }
-            merged.get(parent).add(email);
+            merge.get(parent).add(email);
         }
         List<List<String>> ans = new ArrayList<>();
         for(int i = 0; i<n; i++) {
-            if(merged.containsKey(i)) {
-                ArrayList<String> Emails = merged.get(i);
+            if(merge.containsKey(i)) {
+                ArrayList<String> Emails = merge.get(i);
                 Collections.sort(Emails);
-                ArrayList<String> account = new ArrayList<>();
+                ArrayList<String> account= new ArrayList<>();
                 account.add(accounts.get(i).get(0));
                 account.addAll(Emails);
                 ans.add(account);
