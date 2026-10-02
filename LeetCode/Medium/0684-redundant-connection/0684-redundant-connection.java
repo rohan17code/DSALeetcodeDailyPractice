@@ -7,9 +7,7 @@ class Solution {
         }
     }
     private static int find(int x) {
-        if(x == par[x]) {
-            return x;
-        }
+        if(x == par[x]) return x;
         return par[x] = find(par[x]);
     }
     private static void union(int a, int b) {
@@ -21,7 +19,7 @@ class Solution {
         } else if(rank[parA] < rank[parB]) {
             par[parA] = parB;
         } else {
-            par[parB] = parA;
+            par[parB] = par[parA];
         }
     }
     public int[] findRedundantConnection(int[][] edges) {
