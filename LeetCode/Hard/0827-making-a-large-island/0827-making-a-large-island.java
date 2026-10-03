@@ -22,7 +22,7 @@ class Solution {
             par[parB] = parA;
             size[parA] += size[parB];
         }
-    }
+    }    
     public int largestIsland(int[][] grid) {
         int n = grid.length;
         par = new int[n*n];
@@ -37,8 +37,8 @@ class Solution {
                 for(int i = 0; i<4; i++) {
                     int newRow = row + deltaRow[i];
                     int newCol = col + deltaCol[i];
-                    if(newRow >= 0 && newRow < n && 
-                    newCol >= 0 && newCol <n && grid[newRow][newCol] == 1) {
+                    if(newRow >= 0 && newRow<n && newCol >= 0 && newCol <n && 
+                    grid[newRow][newCol] == 1) {
                         int adjNodeNum = newRow * n + newCol;
                         union(nodeNum, adjNodeNum);
                     }
@@ -46,23 +46,23 @@ class Solution {
             }
         }
         int max = 0;
-        for(int row = 0; row <n; row++) {
+        for(int row = 0; row<n; row++) {
             for(int col = 0; col<n; col++) {
-                if(grid[row][col] == 1) continue;
-                Set<Integer> components = new HashSet<>();
-                for(int i = 0; i<4; i++) {
+               if(grid[row][col] == 1) continue;
+               Set<Integer> components = new HashSet<>();
+               for(int i =0; i<4; i++) {
                     int newRow = row + deltaRow[i];
-                    int newCol = col + deltaCol[i];   
-                    if(newRow >= 0 && newRow <n && newCol >= 0 && newCol< n && grid[newRow][newCol] == 1) {
+                    int newCol = col + deltaCol[i];
+                    if(newRow >= 0 && newRow<n && newCol >= 0 && newCol < n && grid[newRow][newCol] == 1) {
                         int adjNodeNum = newRow * n + newCol;
                         components.add(find(adjNodeNum));
-                    }             
-                }
-                int sizeTotal = 1;
-                for(int parent : components) {
-                    sizeTotal += size[parent];
-                }
-                max = Math.max(max, sizeTotal);
+                    }
+               } 
+               int sizeTotal = 1;
+               for(int parent : components) {
+                sizeTotal += size[parent];
+               }
+               max = Math.max(max, sizeTotal);
             }
         }
         for(int i = 0; i<n*n; i++) {
