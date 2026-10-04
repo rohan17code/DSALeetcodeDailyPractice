@@ -17,10 +17,12 @@ class Solution {
                     curr = curr.left;
                 } else {
                     ip.right = null;
+                    
                     curr = curr.right;
                 }
             }
-        }    
-        return ans;    
+
+        }        
+        return ans;
     }
 }
