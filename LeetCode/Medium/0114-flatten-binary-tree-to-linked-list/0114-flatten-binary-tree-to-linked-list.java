@@ -12,6 +12,6 @@ class Solution {
                 curr.left = null;
             }
             curr = curr.right;
-        }        
+        }
     }
 }
