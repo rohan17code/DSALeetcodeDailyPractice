@@ -13,16 +13,16 @@ public class Codec {
     public String serialize(TreeNode root) {
         if(root == null) return "null";
         StringBuilder sb = new StringBuilder();
-        Queue<TreeNode> q= new LinkedList<>();
+        Queue<TreeNode> q = new LinkedList<>();
         q.offer(root);
         while(!q.isEmpty()) {
-            TreeNode node = q.poll();
+            TreeNode curr = q.poll();
             if(sb.length() > 0) sb.append(',');
-            if(node == null) sb.append('n');
+            if(curr == null) sb.append('n');
             else {
-                sb.append(node.val);
-                q.offer(node.left);
-                q.offer(node.right);
+                sb.append(curr.val);
+                q.offer(curr.left);
+                q.offer(curr.right);
             }
         }
         return sb.toString();
