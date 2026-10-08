@@ -9,8 +9,8 @@ class Solution {
             for(int i = 0; i<size; i++) {
                 TreeNode curr = q.poll();
                 if(i == size - 1) ans.add(curr.val);
-            if(curr.left != null) q.offer(curr.left);
-            if(curr.right != null) q.offer(curr.right);                
+                if(curr.left != null) q.offer(curr.left);
+                if(curr.right != null) q.offer(curr.right);
             }
         }
         return ans;
