@@ -12,7 +12,8 @@ class Solution {
                 TreeNode curr = q.poll();
                 if(oddLvl) {
                     list.addLast(curr.val);
-                } else {
+                }
+                else {
                     list.addFirst(curr.val);
                 }
                 if(curr.left != null) q.offer(curr.left);
