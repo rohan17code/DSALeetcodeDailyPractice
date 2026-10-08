@@ -7,20 +7,20 @@ class Solution {
                 ans.add(curr.val);
                 curr = curr.right;
             } else {
-                TreeNode ip = curr.left;
-                while(ip.right != null && ip.right != curr) {
-                    ip = ip.right;
-                }
-                if(ip.right == null) {
-                    ip.right = curr;
-                    curr = curr.left;
-                } else {
-                    ip.right = null;
-                    ans.add(curr.val);
-                    curr = curr.right;
-                }
+            TreeNode ip = curr.left;
+            while(ip.right != null && ip.right != curr) {
+                ip = ip.right;
             }
-        }  
-        return ans;      
+            if(ip.right == null) {
+                ip.right = curr;
+                curr = curr.left;
+            } else {
+                ip.right = null;
+                ans.add(curr.val);
+                curr = curr.right;
+            }
+        }
+        }
+        return ans;
     }
 }
