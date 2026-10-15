@@ -3,7 +3,7 @@ class Solution {
         int n = nums.length;
         if(n == 1) return nums[0];
         if(nums[0] != nums[1]) return nums[0];
-        if(nums[n-1] != nums[n-2]) return nums[1];
+        if(nums[n-1] != nums[n-2]) return nums[n-1];
         int left = 1, right = n-2;
         while(left <= right) {
             int mid = left + (right - left) / 2;
