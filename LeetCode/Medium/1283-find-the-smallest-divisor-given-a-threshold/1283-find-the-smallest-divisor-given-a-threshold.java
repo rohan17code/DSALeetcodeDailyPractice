@@ -1,21 +1,20 @@
 class Solution {
-    private int sumByD(int[] nums, int div) {
-        double sum = 0;
+    private int func(int[] nums, int divisor) {
         int n = nums.length;
-        for(int i = 0; i<n; i++) {
-            sum += Math.ceil((double)(nums[i]) / (double)(div));
+        double sum = 0;
+        for(int num : nums) {
+            sum += Math.ceil((double)num/(double)divisor);
         }
         return (int) sum;
     }
     public int smallestDivisor(int[] nums, int threshold) {
-        int n = nums.length;
         int left = 1, right = 0;
         for(int num : nums) {
-            right = Math.max(num, right);
+            right = Math.max(right, num);
         }
         while(left <= right) {
-            int mid = left +(right - left)/2;
-            if(sumByD(nums, mid) <= threshold) {
+            int mid = left + (right - left) / 2;
+            if(func(nums, mid) <= threshold) {
                 right = mid - 1;
             } else {
                 left = mid + 1;
