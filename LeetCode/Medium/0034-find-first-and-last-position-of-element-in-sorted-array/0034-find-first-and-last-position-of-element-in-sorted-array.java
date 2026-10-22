@@ -1,6 +1,6 @@
 class Solution {
     private int lowerBound(int[] nums, int target) {
-        int left = 0, right = nums.length - 1;
+        int left = 0, right = nums.length;
         while(left < right) {
             int mid = left +(right - left)/2;
             if(target > nums[mid]) left = mid + 1;
@@ -9,7 +9,7 @@ class Solution {
         return left;
     }
     private int upperBound(int[] nums, int target) {
-        int left = 0, right = nums.length - 1;
+        int left = 0, right = nums.length;
         while(left < right) {
             int mid = left +(right - left)/2;
             if(target >= nums[mid]) left = mid + 1;
