@@ -13,16 +13,16 @@ class Solution {
     }
     public int shipWithinDays(int[] weights, int days) {
         int left = 0, right = 0;
-        for(int x: weights) {
+        for(int x : weights) {
             left = Math.max(left, x);
             right += x;
         }
         while(left <= right) {
-            int mid = left +(right - left)/2;
-            int No_OfDays = func(weights, mid);
-            if(No_OfDays <= days) {
-                right = mid -1;
-            }else left = mid +1;
+            int mid = left + (right - left)/2;
+            int No_ofDays = func(weights, mid);
+            if(No_ofDays <= days) {
+                right = mid - 1;
+            } else left = mid + 1;
         }
         return left;
     }
