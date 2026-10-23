@@ -1,9 +1,8 @@
 class Solution {
-    private int func(int[] nums, int divisor) {
-        int n = nums.length;
+    private int func(int[] nums, int mid) {
         double sum = 0;
         for(int num : nums) {
-            sum += Math.ceil((double)num/(double)divisor);
+            sum += Math.ceil((double)(num)/ (double)(mid));
         }
         return (int) sum;
     }
@@ -13,12 +12,11 @@ class Solution {
             right = Math.max(right, num);
         }
         while(left <= right) {
-            int mid = left + (right - left) / 2;
-            if(func(nums, mid) <= threshold) {
+            int mid = left +(right-left)/2;
+            int sumAfterDiv = func(nums, mid);
+            if(sumAfterDiv <= threshold) {
                 right = mid - 1;
-            } else {
-                left = mid + 1;
-            }
+            } else left = mid + 1;
         }
         return left;
     }
