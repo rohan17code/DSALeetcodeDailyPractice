@@ -1,30 +1,27 @@
 class Solution {
-    private int countSubarrays(int[] nums, long maxSum) {
-        int subArray = 1, currentSum = 0;
-        for(int i = 0; i<nums.length; i++) {
-            if(currentSum + nums[i] <= maxSum) {
-                currentSum += nums[i];
+    private int cntSubArr(int[] nums, long maxSum) {
+        int subArr = 1;
+        int sum = 0;
+        for(int num : nums) {
+            if(num + sum <= maxSum) {
+                sum += num;
             } else {
-                subArray++;
-                currentSum = nums[i];
+                subArr++;
+                sum = num;
             }
         }
-        return subArray;
+        return subArr;
     }
     public int splitArray(int[] nums, int k) {
-        int n = nums.length;
-
         long left = 0, right = 0;
-        for(int x: nums) {
-            left = Math.max(left, x);
-            right += x;
+        for(int num : nums) {
+            left = Math.max(num, left);
+            right += num;
         }
-        while(left <= right) {
-            long mid = left + (right - left)/2;
-            int subArray = countSubarrays(nums, mid);
-            if(subArray > k) {
-                left = mid + 1;
-            } else right = mid - 1;
+        while(left<= right) {
+            long mid = left+(right-left)/2;
+            if(cntSubArr(nums, mid) > k) left = mid + 1;
+            else right = mid - 1;
         }
         return (int) left;
     }
